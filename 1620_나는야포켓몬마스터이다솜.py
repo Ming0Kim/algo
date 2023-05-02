@@ -1,12 +1,15 @@
+import sys
+input = sys.stdin.readline
+
 N, M = map(int, input().split())
 
-pocketmon = [0]
-for _ in range(N):
-    pocketmon.append(input())
+enc = {}
+
+for i in range(1, N+1):
+    pocketmon = input().rstrip()
+    enc[pocketmon] = str(i)
+    enc[str(i)] = pocketmon
 
 for _ in range(M):
-    inputs = input()
-    if inputs.isdigit():
-        print(pocketmon[int(inputs)])
-    else:
-        print(pocketmon.find(inputs))
+    question = input().rstrip()
+    print(enc[question])
